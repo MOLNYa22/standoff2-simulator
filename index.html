@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standoff 2 Team Simulator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        header { text-align: center; margin-bottom: 20px; }
+        .team { margin-bottom: 20px; }
+        .team h2 { margin: 0; }
+        .players { display: flex; flex-direction: column; margin-top: 10px; }
+        .player { margin: 5px 0; }
+        .button { padding: 10px 15px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        .button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Standoff 2 Team vs Team 5v5 Simulator</h1>
+    </header>
+    <div class="team" id="teamA">
+        <h2>Team A</h2>
+        <div class="players" id="teamAPlayers">
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+        </div>
+        <button class="button" onclick="addPlayer('teamA')">Add Player</button>
+    </div>
+    <div class="team" id="teamB">
+        <h2>Team B</h2>
+        <div class="players" id="teamBPlayers">
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+            <div class="player"><input type="text" placeholder="Player Name" /></div>
+        </div>
+        <button class="button" onclick="addPlayer('teamB')">Add Player</button>
+    </div>
+    <button class="button" onclick="simulateMatch()">Simulate Match</button>
+    <div id="matchResult" style="margin-top: 20px;"></div>
+    <script>
+        function addPlayer(team) {
+            let playerName = prompt('Enter Player Name:');
+            if (playerName) {
+                let teamPlayers = document.getElementById(team + 'Players');
+                let newPlayerDiv = document.createElement('div');
+                newPlayerDiv.className = 'player';
+                newPlayerDiv.innerHTML = `<input type='text' value='` + playerName + `' />`;
+                teamPlayers.appendChild(newPlayerDiv);
+            }
+        }
+
+        function simulateMatch() {
+            const teamAPlayers = Array.from(document.querySelectorAll('#teamAPlayers .player input')).map(input => input.value);
+            const teamBPlayers = Array.from(document.querySelectorAll('#teamBPlayers .player input')).map(input => input.value);
+            // Here you can add match simulation logic, for now, it just displays the teams
+            document.getElementById('matchResult').innerHTML = `<h3>Match Result:</h3><p>Team A: ${teamAPlayers.join(', ')}</p><p>Team B: ${teamBPlayers.join(', ')}</p>`;
+        }
+    </script>
+</body>
+</html>
