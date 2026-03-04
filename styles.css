@@ -1,0 +1,25 @@
+.body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.header {
+    background-color: #1f1f1f;
+    padding: 10px;
+}
+
+.button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
